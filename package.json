@@ -1,0 +1,21 @@
+{
+  "name": "js_twitch_bot",
+  "version": "0.0.0",
+  "description": "A Twitch Chat Bot",
+  "main": "src",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "interyon",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.2.0",
+    "async-limiter": "^2.0.0",
+    "colors": "^1.4.0",
+    "esm": "^3.2.25",
+    "node-fetch": "^2.6.1",
+    "sqlite3": "^5.0.0",
+    "tmi.js": "^1.5.0"
+  }
+}
