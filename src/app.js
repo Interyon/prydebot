@@ -233,6 +233,7 @@ function subGiftHandler(channel, username, streakMonths, recipient, methods, use
 }
 
 async function timers(){
+  console.log(`Timers starting`.cyan);
   client.say('#ggpryde', `/me Follow the Pryde twitter to stay up to date on all things Pryde! https://twitter.com/GGPryde ggprydPryde`);
   await tool.sleep(3000);
   for(var i = 0; i < CHANNEL_NAME.length; i++){
@@ -244,4 +245,5 @@ async function timers(){
     client.say(`${CHANNEL_NAME[i]}`, `/me Be sure to shop the ALL NEW Pryde merch! https://pryde.gg/merch ggprydPryde`);
     await tool.sleep(3000);
   }
+  console.log(`Timers complete`.cyan);
 }
