@@ -1,6 +1,6 @@
 import tmi from 'tmi.js';
-import {BOT_USERNAME, CHANNEL_NAME, BLOCKED_WORDS} from './constants';
-import {OAUTH_TOKEN} from '../../twitch_bot_files/data/token';
+import {BOT_USERNAME, CHANNEL_NAME, MOD_ACCOUNTS} from './constants';
+import {OAUTH_TOKEN} from '../../twitch_bot_files/data/prydetoken';
 import * as react from '../lib/react.js';
 import * as tool from './tools.js';
 var colors = require('colors');
@@ -39,39 +39,58 @@ client.on('reconnect', () => {
 });
 
 
+//timers
+setInterval(timers, 600000);
+
+
 //events
 client.on('hosted', (channel, username, viewers, autohost) => {
-  onHostedHandler(channel, username, viewers, autohost);
+  if(channel == '#ggpryde'){
+    onHostedHandler(channel, username, viewers, autohost);
+  }
 });
 
 client.on('subscription', (channel, username, method, msg, user) => {
-  onSubscriptionHandler(channel, username, method, msg, user);
+  if(channel == '#ggpryde'){
+    onSubscriptionHandler(channel, username, method, msg, user);
+  }
 });
 
 client.on('raided', (channel, username, viewers) => {
-  onRaidedHandler(channel, username, viewers);
+  if(channel == '#ggpryde'){
+    onRaidedHandler(channel, username, viewers);
+  }
 });
 
 client.on('cheer', (channel, user, msg) => {
-  onCheerHandler(channel, user, msg);
+  if(channel == '#ggpryde'){
+    onCheerHandler(channel, user, msg);
+  }
 });
 
 client.on('giftpaidupgrade', (channel, username, sender, user) => {
-  onGiftPaidUpgradeHandler(channel, username, sender, user);
+  if(channel == '#ggpryde'){
+    onGiftPaidUpgradeHandler(channel, username, sender, user);
+  }
 });
 
 client.on('hosting', (channel, target, viewers) => {
-  onHostingHandler(channel, target, viewers);
+  if(channel == '#ggpryde'){
+    onHostingHandler(channel, target, viewers);
+  }
 });
 
 client.on('resub', (channel, username, months, msg, user, methods) => {
-  resubHandler(channel, username, months, msg, user, methods);
+  if(channel == '#ggpryde'){
+    resubHandler(channel, username, months, msg, user, methods);
+  }
 });
 
 client.on('subgift', (channel, username, streakMonths, recipient, methods, user) => {
-  subGiftHandler(channel, username, streakMonths, recipient, methods, user);
+  if(channel == '#ggpryde'){
+    subGiftHandler(channel, username, streakMonths, recipient, methods, user);
+  }
 });
-
 
 
 
@@ -118,10 +137,7 @@ function onHostedHandler(channel, username, viewers, autohost){
 
 function onRaidedHandler(channel, username, viewers){
   client.say(channel,
-    `/me interyPOP A RAID OF ${viewers}! interyPOP Thank you ${username} for the RAID!!! leiabeLove`
-  );
-  client.say(channel,
-    `/me GO DROP A FOLLOW! https://www.twitch.tv/${username}! PogChamp`
+    `/me ggprydPryde A RAID OF ${viewers}! ggprydPryde Thank you ${username} for the RAID!!! TehePelo`
   );
   console.log(`${channel} was raided by ${username} with ${viewers} viewers`.green);
 }
@@ -129,22 +145,22 @@ function onRaidedHandler(channel, username, viewers){
 function onSubscriptionHandler(channel, username, method, msg, user){
   if (user['msg-param-sub-plan'] === 'Prime'){
     client.say(channel,
-      `/me interyPOP NEW PRIME SUB interyPOP ${username}, thank you for supporting the stream! leiabeLove`
+      `/me ggprydPryde NEW PRIME SUB ggprydPryde ${username}, thank you for supporting the stream! TehePelo`
     );
     console.log(`${username} has subbed to ${channel} with PRIME`.green);
   }else if (user['msg-param-sub-plan'] === '1000'){
     client.say(channel,
-      `/me interyPOP NEW TIER 1 SUB! interyPOP ${username}, thank you for supporting the stream!`
+      `/me ggprydPryde NEW TIER 1 SUB! ggprydPryde ${username}, thank you for supporting the stream!`
     );
     console.log(`${username} has subbed to ${channel} with TIER 1`.green);
   }else if (user['msg-param-sub-plan'] === '2000'){
     client.say(channel,
-      `/me interyPOP NEW TIER 2 SUB! interyPOP ${username}, thank you for supporting the stream!`
+      `/me ggprydPryde NEW TIER 2 SUB! ggprydPryde ${username}, thank you for supporting the stream!`
     );
     console.log(`${username} has subbed to ${channel} with TIER 2`.green);
   }else if (user['msg-param-sub-plan'] === '3000'){
     client.say(channel,
-      `/me interyPOP NEW TIER 3 SUB! interyPOP ${username}, thank you for supporting the stream!`
+      `/me ggprydPryde NEW TIER 3 SUB! ggprydPryde ${username}, thank you for supporting the stream!`
     );
     console.log(`${username} has subbed to ${channel} with TIER 3`.green);
   }
@@ -152,7 +168,7 @@ function onSubscriptionHandler(channel, username, method, msg, user){
 
 function onCheerHandler(channel, user, msg){
   client.say(channel,
-    `/me interyPOP OMG OMG OMG interyPOP ${user.username} with the ${user.bits} bits! leiabeLove`
+    `/me ggprydPryde OMG OMG OMG ggprydPryde ${user.username} with the ${user.bits} bits! TehePelo`
   );
   console.log(`${user.username} has cheered ${user.bits} to ${channel}`.green);
 }
@@ -176,22 +192,22 @@ function resubHandler(channel, username, months, msg, user, methods){
 
   if (user['msg-param-sub-plan'] === 'Prime'){
     client.say(channel,
-      `/me interyPOP PRIME SUB interyPOP ${username}, thanks for the ${cumulativeMonths} month sub! leiabeLove`
+      `/me ggprydPryde PRIME SUB ggprydPryde ${username}, thanks for the ${cumulativeMonths} month sub! TehePelo`
     );
     console.log(`${username} has resubbed to ${channel} with PRIME`.green);
   }else if (user['msg-param-sub-plan'] === '1000'){
     client.say(channel,
-      `/me interyPOP TIER 1 SUB interyPOP ${username}, thanks for the ${cumulativeMonths} month sub! leiabeLove`
+      `/me ggprydPryde TIER 1 SUB ggprydPryde ${username}, thanks for the ${cumulativeMonths} month sub! TehePelo`
     );
     console.log(`${username} has resubbed to ${channel} with TIER 1`.green);
   }else if (user['msg-param-sub-plan'] === '2000'){
     client.say(channel,
-      `/me interyPOP TIER 2 SUB interyPOP ${username}, thanks for the ${cumulativeMonths} month sub! leiabeLove`
+      `/me ggprydPryde TIER 2 SUB ggprydPryde ${username}, thanks for the ${cumulativeMonths} month sub! TehePelo`
     );
     console.log(`${username} has resubbed to ${channel} with TIER 2`.green);
   }else if (user['msg-param-sub-plan'] === '3000'){
     client.say(channel,
-      `/me interyPOP TIER 3 SUB interyPOP ${username}, thanks for the ${cumulativeMonths} month sub! leiabeLove`
+      `/me ggprydPryde TIER 3 SUB ggprydPryde ${username}, thanks for the ${cumulativeMonths} month sub! TehePelo`
     );
     console.log(`${username} has resubbed to ${channel} with TIER 3`.green);
   }
@@ -200,18 +216,32 @@ function resubHandler(channel, username, months, msg, user, methods){
 function subGiftHandler(channel, username, streakMonths, recipient, methods, user){
   if (user['msg-param-sub-plan'] === '1000'){
     client.say(channel,
-      `/me interyPOP GIFTED TIER 1 SUB interyPOP ${username}, thank you for gifting a TIER 1 SUB to ${recipient}! leiabeLove`
+      `/me ggprydPryde GIFTED TIER 1 SUB ggprydPryde ${username}, thank you for gifting a TIER 1 SUB to ${recipient}! TehePelo`
     );
     console.log(`${username} has gifted sub to ${recipient} in ${channel} with TIER 1`.green);
   }else if (user['msg-param-sub-plan'] === '2000'){
     client.say(channel,
-      `/me interyPOP GIFTED TIER 2 SUB interyPOP ${username}, thank you for gifting a TIER 2 SUB to ${recipient}! leiabeLove`
+      `/me ggprydPryde GIFTED TIER 2 SUB ggprydPryde ${username}, thank you for gifting a TIER 2 SUB to ${recipient}! TehePelo`
     );
     console.log(`${username} has gifted sub to ${recipient} in ${channel} with TIER 2`.green);
   }else if (user['msg-param-sub-plan'] === '3000'){
     client.say(channel,
-      `/me interyPOP GIFTED TIER 3 SUB interyPOP ${username}, thank you for gifting a TIER 3 SUB to ${recipient}! leiabeLove`
+      `/me ggprydPryde GIFTED TIER 3 SUB ggprydPryde ${username}, thank you for gifting a TIER 3 SUB to ${recipient}! TehePelo`
     );
     console.log(`${username} has gifted sub to ${recipient} in ${channel} with TIER 3`.green);
+  }
+}
+
+async function timers(){
+  client.say('#ggpryde', `/me Follow the Pryde twitter to stay up to date on all things Pryde! https://twitter.com/GGPryde ggprydPryde`);
+  await tool.sleep(3000);
+  for(var i = 0; i < CHANNEL_NAME.length; i++){
+    client.say(`${CHANNEL_NAME[i]}`, `/me Need a boost? Pick up some GFUEL Energy, and be sure to save some money by using code "PRYDE" at checkout! https://pryde.gg/gfuel ggprydPryde`);
+    await tool.sleep(3000);
+  }
+  await tool.sleep(300000);
+  for(var i = 0; i < CHANNEL_NAME.length; i++){
+    client.say(`${CHANNEL_NAME[i]}`, `/me Be sure to shop the ALL NEW Pryde merch! https://pryde.gg/merch ggprydPryde`);
+    await tool.sleep(3000);
   }
 }
