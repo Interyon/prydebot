@@ -19,7 +19,7 @@ export const MOD_ACCOUNTS = [
   'sightey', 'interyon'
 ];
 
-export const BOT_USERNAME = 'interyon';
+export const BOT_USERNAME = 'ggrpyde';
 
 export const BLOCKED_WORDS = [
   'nigger', 'faggot', 'kneeger',
