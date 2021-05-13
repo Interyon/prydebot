@@ -40,7 +40,7 @@ client.on('reconnect', () => {
 
 
 //timers
-setInterval(timers, 600000);
+setInterval(timers, 1800000);
 
 
 //events
@@ -103,7 +103,7 @@ async function onMessageHandler (channel, user, msg, self) {
   let args = msg;
 
   CHAT_MSGS_COUNT[CHANNEL_NAME.indexOf(channel)]++;
-  if(CHAT_MSGS_COUNT[CHANNEL_NAME.indexOf(channel)] >= 10){
+  if(CHAT_MSGS_COUNT[CHANNEL_NAME.indexOf(channel)] >= 15){
     CHAT_MSGS_COUNT[CHANNEL_NAME.indexOf(channel)] = 0;
     BOOL_SEND_TIMER[CHANNEL_NAME.indexOf(channel)] = 1;
   }
@@ -243,7 +243,7 @@ async function timers(){
     client.say('#ggpryde', `/me Follow the Pryde twitter to stay up to date on all things Pryde! https://twitter.com/GGPryde ggprydPryde`);
   }
   
-  await tool.sleep(120000);
+  await tool.sleep(900000);
   for(var i = 0; i < CHANNEL_NAME.length; i++){
     if(BOOL_SEND_TIMER[i] == 1){
       client.say(`${CHANNEL_NAME[i]}`, `/me Need a boost? Pick up some GFUEL Energy, and be sure to save some money by using code "PRYDE" at checkout! https://pryde.gg/gfuel ggprydPryde`);
@@ -251,7 +251,7 @@ async function timers(){
     BOOL_SEND_TIMER[i] = 0;
     await tool.sleep(3000);
   }
-  await tool.sleep(300000);
+  await tool.sleep(900000);
   console.log(`March timers starting`.cyan);
   for(var i = 0; i < CHANNEL_NAME.length; i++){
     if(BOOL_SEND_TIMER[i] == 1){
