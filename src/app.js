@@ -40,7 +40,7 @@ client.on('reconnect', () => {
 
 
 //timers
-setInterval(timers, 1800000);
+setInterval(timers, 2400000);
 
 
 //events
