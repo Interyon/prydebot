@@ -1,5 +1,5 @@
-export const CHANNEL_NAME = ['millnash', 'ggpryde'];
-export const sCHANNEL_NAME = [
+//export const CHANNEL_NAME = ['millnash', 'ggpryde'];
+export const CHANNEL_NAME = [
   'zachawoop', 'millnash', 'jaybowtv',
   'earlswood', 'cathywithak', 'reallykerns',
   'jaaybear', 'elatedgaze', 'thepagz',
@@ -9,8 +9,7 @@ export const sCHANNEL_NAME = [
   'bigsyn','channas','nathanrobinson',
   'unclecranston','trinitylimit_','angelsy_',
   'coop5mac','endembers', 'fivebc', 
-  'impd', 'ggpryde', 'interyon',
-  'draecoh'
+  'impd', 'ggpryde', 'draecoh'
 ];
 
 export const MOD_ACCOUNTS = [
