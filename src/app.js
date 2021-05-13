@@ -1,6 +1,6 @@
 import tmi from 'tmi.js';
-import {BOT_USERNAME, CHANNEL_NAME, MOD_ACCOUNTS} from './constants';
-import {OAUTH_TOKEN} from '../../twitch_bot_files/data/prydetoken';
+import {BOT_USERNAME, CHANNEL_NAME, MOD_ACCOUNTS, CHAT_MSGS_COUNT, BOOL_SEND_TIMER} from './constants';
+import {OAUTH_TOKEN} from '../../twitch_bot_files/data/token';
 import * as react from '../lib/react.js';
 import * as tool from './tools.js';
 var colors = require('colors');
@@ -102,6 +102,11 @@ async function onMessageHandler (channel, user, msg, self) {
   msg.shift();
   let args = msg;
 
+  CHAT_MSGS_COUNT[CHANNEL_NAME.indexOf(channel)]++;
+  if(CHAT_MSGS_COUNT[CHANNEL_NAME.indexOf(channel)] >= 10){
+    CHAT_MSGS_COUNT[CHANNEL_NAME.indexOf(channel)] = 0;
+    BOOL_SEND_TIMER[CHANNEL_NAME.indexOf(channel)] = 1;
+  }
   //console.log(user);
   //console.log(channel);
   react.add_user(user);
@@ -233,16 +238,26 @@ function subGiftHandler(channel, username, streakMonths, recipient, methods, use
 }
 
 async function timers(){
-  console.log(`Timers starting`.cyan);
-  client.say('#ggpryde', `/me Follow the Pryde twitter to stay up to date on all things Pryde! https://twitter.com/GGPryde ggprydPryde`);
-  await tool.sleep(3000);
+  console.log(`GFuel timers starting`.cyan);
+  if(BOOL_SEND_TIMER[CHANNEL_NAME.indexOf('ggpryde')] == 1){
+    client.say('#ggpryde', `/me Follow the Pryde twitter to stay up to date on all things Pryde! https://twitter.com/GGPryde ggprydPryde`);
+  }
+  
+  await tool.sleep(120000);
   for(var i = 0; i < CHANNEL_NAME.length; i++){
-    client.say(`${CHANNEL_NAME[i]}`, `/me Need a boost? Pick up some GFUEL Energy, and be sure to save some money by using code "PRYDE" at checkout! https://pryde.gg/gfuel ggprydPryde`);
+    if(BOOL_SEND_TIMER[i] == 1){
+      client.say(`${CHANNEL_NAME[i]}`, `/me Need a boost? Pick up some GFUEL Energy, and be sure to save some money by using code "PRYDE" at checkout! https://pryde.gg/gfuel ggprydPryde`);
+    }
+    BOOL_SEND_TIMER[i] = 0;
     await tool.sleep(3000);
   }
   await tool.sleep(300000);
+  console.log(`March timers starting`.cyan);
   for(var i = 0; i < CHANNEL_NAME.length; i++){
-    client.say(`${CHANNEL_NAME[i]}`, `/me Be sure to shop the ALL NEW Pryde merch! https://pryde.gg/merch ggprydPryde`);
+    if(BOOL_SEND_TIMER[i] == 1){
+      client.say(`${CHANNEL_NAME[i]}`, `/me Be sure to shop the ALL NEW Pryde merch! https://pryde.gg/merch ggprydPryde`);
+    }
+    BOOL_SEND_TIMER[i] = 0;
     await tool.sleep(3000);
   }
   console.log(`Timers complete`.cyan);

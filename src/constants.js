@@ -1,5 +1,5 @@
-//export const CHANNEL_NAME = ['interyon', 'millnash', 'leiabelle'];
-export const CHANNEL_NAME = [
+export const CHANNEL_NAME = ['millnash', 'ggpryde'];
+export const sCHANNEL_NAME = [
   'zachawoop', 'millnash', 'jaybowtv',
   'earlswood', 'cathywithak', 'reallykerns',
   'jaaybear', 'elatedgaze', 'thepagz',
@@ -19,7 +19,15 @@ export const MOD_ACCOUNTS = [
   'sightey', 'interyon'
 ];
 
-export const BOT_USERNAME = 'ggrpyde';
+export const BOT_USERNAME = 'ggpryde';
+
+export var CHAT_MSGS_COUNT = [];
+export var BOOL_SEND_TIMER = [];
+
+for(var i = 0; i < CHANNEL_NAME.length; i++){
+  CHAT_MSGS_COUNT[i] = 0;
+  BOOL_SEND_TIMER[i] = 0;
+}
 
 export const BLOCKED_WORDS = [
   'nigger', 'faggot', 'kneeger',
