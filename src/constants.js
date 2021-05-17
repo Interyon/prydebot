@@ -1,15 +1,7 @@
 //export const CHANNEL_NAME = ['millnash', 'ggpryde'];
 export const CHANNEL_NAME = [
-  'zachawoop', 'millnash', 'jaybowtv',
-  'earlswood', 'cathywithak', 'reallykerns',
-  'jaaybear', 'elatedgaze', 'thepagz',
-  'skuxxsd','mindofseem','stoopidfps',
-  'nukeemking','prismaticdave','leiabelle',
-  'imvigy','itswiizd','glitchinlive',
-  'bigsyn','channas','nathanrobinson',
-  'unclecranston','trinitylimit_','angelsy_',
-  'coop5mac','endembers', 'fivebc', 
-  'impd', 'ggpryde', 'draecoh'
+  'ggpryde', 'leiabelle', 'interyon',
+  'gothtarget'
 ];
 
 export const MOD_ACCOUNTS = [
@@ -39,3 +31,16 @@ export const BLOCKED_WORDS = [
   'blackie', 'blacky', 'zipperhead',
 ];
 
+/*
+* streamer list
+'zachawoop', 'millnash', 'jaybowtv',
+  'earlswood', 'cathywithak', 'reallykerns',
+  'jaaybear', 'elatedgaze', 'thepagz',
+  'skuxxsd','mindofseem','stoopidfps',
+  'nukeemking','prismaticdave','leiabelle',
+  'imvigy','itswiizd','glitchinlive',
+  'bigsyn','channas','nathanrobinson',
+  'unclecranston','trinitylimit_','angelsy_',
+  'coop5mac','endembers', 'fivebc', 
+  'impd', 'ggpryde', 'draecoh'
+  */
